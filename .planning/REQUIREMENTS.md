@@ -14,16 +14,16 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Validation
 
-- [ ] **VALID-01**: Runtime validation of date parameters (ISO 8601 format with UTC indicator)
-- [ ] **VALID-02**: Runtime validation of MPAN format (13 digits) and MPRN format (10 digits)
-- [ ] **VALID-03**: Runtime validation of page_size (1-25000 range)
-- [ ] **VALID-04**: Safe parameter extraction from args (null/undefined handled correctly instead of unsafe casting)
+- [x] **VALID-01**: Runtime validation of date parameters (ISO 8601 format with UTC indicator)
+- [x] **VALID-02**: Runtime validation of MPAN format (13 digits) and MPRN format (10 digits)
+- [x] **VALID-03**: Runtime validation of page_size (1-25000 range)
+- [x] **VALID-04**: Safe parameter extraction from args (null/undefined handled correctly instead of unsafe casting)
 
 ### Robustness
 
-- [ ] **ROBUS-01**: Fetch timeout on API calls (30 second default)
-- [ ] **ROBUS-02**: Server fails fast at startup when OCTOPUS_API_KEY is missing
-- [ ] **ROBUS-03**: Enhanced error messages include request context (meter type, identifier used)
+- [x] **ROBUS-01**: Fetch timeout on API calls (30 second default)
+- [x] **ROBUS-02**: Server fails fast at startup when OCTOPUS_API_KEY is missing
+- [x] **ROBUS-03**: Enhanced error messages include request context (meter type, identifier used)
 
 ### Cleanup
 
@@ -71,13 +71,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | STRUC-02 | Phase 1 | Complete |
 | CLEAN-01 | Phase 1 | Complete |
 | CLEAN-02 | Phase 1 | Complete |
-| VALID-01 | Phase 2 | Pending |
-| VALID-02 | Phase 2 | Pending |
-| VALID-03 | Phase 2 | Pending |
-| VALID-04 | Phase 2 | Pending |
-| ROBUS-01 | Phase 2 | Pending |
-| ROBUS-02 | Phase 2 | Pending |
-| ROBUS-03 | Phase 2 | Pending |
+| VALID-01 | Phase 2 | Complete |
+| VALID-02 | Phase 2 | Complete |
+| VALID-03 | Phase 2 | Complete |
+| VALID-04 | Phase 2 | Complete |
+| ROBUS-01 | Phase 2 | Complete |
+| ROBUS-02 | Phase 2 | Complete |
+| ROBUS-03 | Phase 2 | Complete |
 | TEST-01 | Phase 3 | Pending |
 | TEST-02 | Phase 3 | Pending |
 | TEST-03 | Phase 3 | Pending |

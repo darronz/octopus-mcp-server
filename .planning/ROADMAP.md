@@ -13,7 +13,7 @@ This milestone hardens a working 344-line single-file TypeScript MCP server into
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Restructure** - Split monolithic index.ts into modules and remove unused dependency
-- [ ] **Phase 2: Harden** - Add input validation, safe parameter handling, timeout, and fail-fast startup
+- [x] **Phase 2: Harden** - Add input validation, safe parameter handling, timeout, and fail-fast startup (completed 2026-02-18)
 - [ ] **Phase 3: Test** - Install test framework and write unit tests for all hardened behavior
 
 ## Phase Details
@@ -44,7 +44,11 @@ Plans:
   3. API calls that hang are cancelled after 30 seconds and return a timeout error
   4. Starting the server without OCTOPUS_API_KEY set exits immediately with a clear message instead of failing silently on first request
   5. Error messages include which meter type and identifier was being queried when the failure occurred
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Create validation module and wire into handlers with safe parameter extraction
+- [ ] 02-02-PLAN.md — Add fetch timeout, fail-fast startup, and contextual error messages
 
 ### Phase 3: Test
 **Goal**: Unit tests cover the API client, validation, and parameter extraction so regressions are caught automatically
@@ -64,6 +68,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Restructure | 3/3 | Complete | 2026-02-18 |
-| 2. Harden | 0/TBD | Not started | - |
+| 1. Restructure | 3/3 | Complete    | 2026-02-18 |
+| 2. Harden | 2/2 | Complete   | 2026-02-18 |
 | 3. Test | 0/TBD | Not started | - |

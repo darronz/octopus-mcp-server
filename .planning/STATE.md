@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** Reliable, well-structured MCP server that returns accurate Octopus Energy consumption data with clear error messages when things go wrong.
-**Current focus:** Phase 1 - Restructure
+**Current focus:** Phase 2 - Harden
 
 ## Current Position
 
-Phase: 1 of 3 (Restructure)
-Plan: 3 of 3 in current phase
-Status: Phase 1 complete — ready for Phase 2 (Harden)
-Last activity: 2026-02-18 — Phase 1 restructure fully verified and approved by user
+Phase: 2 of 3 (Harden)
+Plan: 2 of 2 in current phase
+Status: Phase 2 complete — 02-01 input validation and 02-02 timeout/fail-fast hardening done
+Last activity: 2026-02-18 — Completed 02-02: fetch timeout, fail-fast startup, contextual errors
 
-Progress: [███░░░░░░░] 33%
+Progress: [██████░░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: 1 min
 - Total execution time: 0.05 hours
 
@@ -28,9 +28,10 @@ Progress: [███░░░░░░░] 33%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-restructure | 3 | 4 min | 1 min |
+| 02-harden | 2 | 4 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 1 min
+- Last 5 plans: 1-2 min
 - Trend: -
 
 *Updated after each plan completion*
@@ -53,6 +54,13 @@ Recent decisions affecting current work:
 - Type discriminator sets mpan for electricity and mprn for gas, leaving the other undefined (01-02)
 - Manual .env parser comment preserved (not a dotenv import); dotenv package fully removed (01-03)
 - run() is a standalone async function (not a class method), consistent with the new module-based structure (01-03)
+- Validation functions return undefined for absent optional parameters (not error) — consistent with API defaults (02-01)
+- validateDate checks both regex format and calendar validity to reject impossible dates like 2024-13-01T00:00:00Z (02-01)
+- No try/catch added to handleConsumption — validation errors propagate up to server.ts error handler by design (02-01)
+- FETCH_TIMEOUT_MS constant at module level (30000ms) for single source of truth in timeout handling (02-02)
+- TimeoutError check uses DOMException name check (Node 18+ behavior), not AbortError (02-02)
+- Defense-in-depth apiKey check preserved in api-client.ts; index.ts check is the primary gate (02-02)
+- Fail-fast check runs at module scope synchronously, not inside async run() function (02-02)
 
 ### Pending Todos
 
@@ -65,5 +73,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-03-PLAN.md — Phase 1 restructure verified and approved. Ready for Phase 2.
+Stopped at: Completed 02-02-PLAN.md — Phase 2 hardening fully complete. Ready for Phase 3.
 Resume file: None
