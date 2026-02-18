@@ -22,9 +22,27 @@ export function validateDate(value: unknown, paramName: string): string | undefi
       `Invalid ${paramName}: must be ISO 8601 format with UTC indicator (e.g., 2024-01-15T00:00:00Z)`
     );
   }
-  // Verify the date actually represents a valid calendar date (e.g. reject 2024-13-01)
+  // Verify the date actually represents a valid calendar date (e.g. reject 2024-13-01,
+  // 2024-02-30). JavaScript's Date constructor silently overflows out-of-range days/months
+  // (e.g. Feb 30 → Mar 1), so we must round-trip the UTC components back to the
+  // original string fields to detect overflow.
   const parsed = new Date(value);
   if (isNaN(parsed.getTime())) {
+    throw new Error(
+      `Invalid ${paramName}: must be ISO 8601 format with UTC indicator (e.g., 2024-01-15T00:00:00Z)`
+    );
+  }
+  const [datePart, timePart] = value.split("T");
+  const [year, month, day] = datePart.split("-").map(Number);
+  const [hour, minute, second] = timePart.replace("Z", "").split(":").map(Number);
+  if (
+    parsed.getUTCFullYear() !== year ||
+    parsed.getUTCMonth() + 1 !== month ||
+    parsed.getUTCDate() !== day ||
+    parsed.getUTCHours() !== hour ||
+    parsed.getUTCMinutes() !== minute ||
+    parsed.getUTCSeconds() !== second
+  ) {
     throw new Error(
       `Invalid ${paramName}: must be ISO 8601 format with UTC indicator (e.g., 2024-01-15T00:00:00Z)`
     );
