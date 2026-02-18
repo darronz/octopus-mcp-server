@@ -1,6 +1,7 @@
 import type { OctopusConfig, ConsumptionParams } from "./types.js";
 import { fetchConsumption } from "./api-client.js";
 import type { Tool } from "@modelcontextprotocol/sdk/types.js";
+import { validateDate, validateMpan, validateMprn, validatePageSize, extractString, extractGroupBy } from "./validation.js";
 
 export function getToolDefinitions(): Tool[] {
   return [
@@ -95,14 +96,14 @@ export async function handleConsumption(
   args: Record<string, unknown>
 ): Promise<{ content: Array<{ type: "text"; text: string }>; isError?: boolean }> {
   const params: ConsumptionParams = {
-    mpan: type === "electricity" ? (args.mpan as string | undefined) : undefined,
-    mprn: type === "gas" ? (args.mprn as string | undefined) : undefined,
-    serialNumber: args.serial_number as string | undefined,
-    periodFrom: args.period_from as string | undefined,
-    periodTo: args.period_to as string | undefined,
-    pageSize: args.page_size as number | undefined,
-    orderBy: args.order_by as string | undefined,
-    groupBy: args.group_by as "day" | "week" | "month" | "quarter" | undefined,
+    mpan: type === "electricity" ? validateMpan(args.mpan) : undefined,
+    mprn: type === "gas" ? validateMprn(args.mprn) : undefined,
+    serialNumber: extractString(args.serial_number, "serial_number"),
+    periodFrom: validateDate(args.period_from, "period_from"),
+    periodTo: validateDate(args.period_to, "period_to"),
+    pageSize: validatePageSize(args.page_size),
+    orderBy: extractString(args.order_by, "order_by"),
+    groupBy: extractGroupBy(args.group_by),
   };
 
   const data = await fetchConsumption(config, type, params);
