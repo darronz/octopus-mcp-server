@@ -37,6 +37,13 @@ const config: OctopusConfig = {
   gasSerialNumber: process.env.GAS_SERIAL_NUMBER,
 };
 
+// Fail fast if API key is missing — don't wait for first tool call to discover this
+if (!config.apiKey) {
+  console.error("Error: OCTOPUS_API_KEY is not set.");
+  console.error("Set it in your .env file or as an environment variable.");
+  process.exit(1);
+}
+
 // Create and start the MCP server
 const server = createServer(config);
 
