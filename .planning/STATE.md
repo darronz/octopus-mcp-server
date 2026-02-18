@@ -10,24 +10,24 @@ See: .planning/PROJECT.md (updated 2026-02-18)
 ## Current Position
 
 Phase: 1 of 3 (Restructure)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-18 — Completed 01-02 (handlers.ts and server.ts created)
+Plan: 3 of 3 in current phase
+Status: Phase complete (awaiting checkpoint verification)
+Last activity: 2026-02-18 — Completed 01-03 (index.ts rewritten as thin entry point, dotenv removed)
 
-Progress: [██░░░░░░░░] 22%
+Progress: [███░░░░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
+- Total plans completed: 3
 - Average duration: 1 min
-- Total execution time: 0.03 hours
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-restructure | 2 | 2 min | 1 min |
+| 01-restructure | 3 | 4 min | 1 min |
 
 **Recent Trend:**
 - Last 5 plans: 1 min
@@ -51,6 +51,8 @@ Recent decisions affecting current work:
 - handleConsumption has no try/catch - throws on error, caller (server.ts) handles error formatting (01-02)
 - createServer() only configures the server; transport connection and logging remain in index.ts entry point (01-02)
 - Type discriminator sets mpan for electricity and mprn for gas, leaving the other undefined (01-02)
+- Manual .env parser comment preserved (not a dotenv import); dotenv package fully removed (01-03)
+- run() is a standalone async function (not a class method), consistent with the new module-based structure (01-03)
 
 ### Pending Todos
 
@@ -63,5 +65,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-02-PLAN.md — handlers and server modules (handlers.ts, server.ts) created
+Stopped at: Completed 01-03-PLAN.md Task 1 — checkpoint:human-verify awaiting user confirmation
 Resume file: None

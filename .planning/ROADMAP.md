@@ -12,7 +12,7 @@ This milestone hardens a working 344-line single-file TypeScript MCP server into
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Restructure** - Split monolithic index.ts into modules and remove unused dependency
+- [x] **Phase 1: Restructure** - Split monolithic index.ts into modules and remove unused dependency
 - [ ] **Phase 2: Harden** - Add input validation, safe parameter handling, timeout, and fail-fast startup
 - [ ] **Phase 3: Test** - Install test framework and write unit tests for all hardened behavior
 
@@ -31,8 +31,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — Create src/types.ts (shared interfaces) and src/api-client.ts (standalone fetchConsumption)
-- [ ] 01-02-PLAN.md — Create src/handlers.ts (shared handler + tool definitions) and src/server.ts (MCP server factory)
-- [ ] 01-03-PLAN.md — Rewrite src/index.ts as thin entry point, remove dotenv from package.json, verify build
+- [x] 01-02-PLAN.md — Create src/handlers.ts (shared handler + tool definitions) and src/server.ts (MCP server factory)
+- [x] 01-03-PLAN.md — Rewrite src/index.ts as thin entry point, remove dotenv from package.json, verify build
 
 ### Phase 2: Harden
 **Goal**: The server validates all inputs and fails clearly when something is wrong
@@ -64,6 +64,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Restructure | 2/3 | In Progress|  |
+| 1. Restructure | 3/3 | Complete | 2026-02-18 |
 | 2. Harden | 0/TBD | Not started | - |
 | 3. Test | 0/TBD | Not started | - |

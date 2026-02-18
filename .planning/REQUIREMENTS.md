@@ -27,8 +27,8 @@ Requirements for this milestone. Each maps to roadmap phases.
 
 ### Cleanup
 
-- [ ] **CLEAN-01**: Remove unused dotenv dependency from package.json
-- [ ] **CLEAN-02**: Keep manual .env parser (remove dotenv import references)
+- [x] **CLEAN-01**: Remove unused dotenv dependency from package.json
+- [x] **CLEAN-02**: Keep manual .env parser (remove dotenv import references)
 
 ### Testing
 
@@ -69,8 +69,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | STRUC-01 | Phase 1 | Complete (01-01) |
 | STRUC-02 | Phase 1 | Complete |
-| CLEAN-01 | Phase 1 | Pending |
-| CLEAN-02 | Phase 1 | Pending |
+| CLEAN-01 | Phase 1 | Complete |
+| CLEAN-02 | Phase 1 | Complete |
 | VALID-01 | Phase 2 | Pending |
 | VALID-02 | Phase 2 | Pending |
 | VALID-03 | Phase 2 | Pending |
