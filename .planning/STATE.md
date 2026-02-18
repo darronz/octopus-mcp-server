@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** Reliable, well-structured MCP server that returns accurate Octopus Energy consumption data with clear error messages when things go wrong.
-**Current focus:** Phase 2 - Harden
+**Current focus:** Phase 3 - Test
 
 ## Current Position
 
-Phase: 2 of 3 (Harden)
-Plan: 2 of 2 in current phase
-Status: Phase 2 complete — 02-01 input validation and 02-02 timeout/fail-fast hardening done
-Last activity: 2026-02-18 — Completed 02-02: fetch timeout, fail-fast startup, contextual errors
+Phase: 3 of 3 (Test)
+Plan: 1 of 2 in current phase
+Status: Phase 3 in progress — 03-01 Vitest infrastructure and validation unit tests complete
+Last activity: 2026-02-18 — Completed 03-01: Vitest install, 58 passing unit tests for all 6 validation functions
 
-Progress: [██████░░░░] 67%
+Progress: [████████░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 1 min
-- Total execution time: 0.05 hours
+- Total execution time: 0.06 hours
 
 **By Phase:**
 
@@ -29,6 +29,7 @@ Progress: [██████░░░░] 67%
 |-------|-------|-------|----------|
 | 01-restructure | 3 | 4 min | 1 min |
 | 02-harden | 2 | 4 min | 2 min |
+| 03-test | 1 | 2 min | 2 min |
 
 **Recent Trend:**
 - Last 5 plans: 1-2 min
@@ -36,6 +37,7 @@ Progress: [██████░░░░] 67%
 
 *Updated after each plan completion*
 | Phase 02-harden P02 | 2 | 2 tasks | 2 files |
+| Phase 03-test P01 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -62,6 +64,9 @@ Recent decisions affecting current work:
 - TimeoutError check uses DOMException name check (Node 18+ behavior), not AbortError (02-02)
 - Defense-in-depth apiKey check preserved in api-client.ts; index.ts check is the primary gate (02-02)
 - Fail-fast check runs at module scope synchronously, not inside async run() function (02-02)
+- vitest.config.ts uses defineConfig with src/**/*.test.ts include for co-located test files (03-01)
+- test script uses vitest run (CI mode); test:watch uses vitest (interactive) (03-01)
+- validateDate fixed to round-trip UTC components against parsed Date to detect overflow dates like Feb 30 (03-01)
 
 ### Pending Todos
 
@@ -74,5 +79,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 02-02-PLAN.md — Phase 2 hardening fully complete. Ready for Phase 3.
+Stopped at: Completed 03-01-PLAN.md — Vitest infrastructure and validation unit tests complete. Ready for 03-02.
 Resume file: None

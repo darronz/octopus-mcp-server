@@ -47,8 +47,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Create validation module and wire into handlers with safe parameter extraction
-- [ ] 02-02-PLAN.md — Add fetch timeout, fail-fast startup, and contextual error messages
+- [x] 02-01-PLAN.md — Create validation module and wire into handlers with safe parameter extraction
+- [x] 02-02-PLAN.md — Add fetch timeout, fail-fast startup, and contextual error messages
 
 ### Phase 3: Test
 **Goal**: Unit tests cover the API client, validation, and parameter extraction so regressions are caught automatically
@@ -59,7 +59,11 @@ Plans:
   2. Tests verify that the API client constructs correct URLs and auth headers for electricity and gas endpoints
   3. Tests verify that each validation rule (dates, MPAN, MPRN, page_size) rejects invalid input and accepts valid input
   4. Tests verify that parameter extraction handles missing, null, and valid values correctly
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Install Vitest, configure test infrastructure, write validation and extraction tests
+- [ ] 03-02-PLAN.md — Write API client tests with mocked fetch (URL, auth, params, errors, timeout)
 
 ## Progress
 
@@ -70,4 +74,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Restructure | 3/3 | Complete    | 2026-02-18 |
 | 2. Harden | 2/2 | Complete   | 2026-02-18 |
-| 3. Test | 0/TBD | Not started | - |
+| 3. Test | 0/2 | Not started | - |
