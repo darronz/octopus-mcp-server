@@ -35,6 +35,7 @@ Progress: [██████░░░░] 67%
 - Trend: -
 
 *Updated after each plan completion*
+| Phase 02-harden P02 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
