@@ -33,7 +33,7 @@ Requirements for this milestone. Each maps to roadmap phases.
 ### Testing
 
 - [x] **TEST-01**: Test framework installed and configured (Vitest)
-- [ ] **TEST-02**: Unit tests for API client (URL construction, auth headers, error handling)
+- [x] **TEST-02**: Unit tests for API client (URL construction, auth headers, error handling)
 - [x] **TEST-03**: Unit tests for input validation logic
 - [x] **TEST-04**: Unit tests for parameter extraction and mapping
 
@@ -79,7 +79,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ROBUS-02 | Phase 2 | Complete |
 | ROBUS-03 | Phase 2 | Complete |
 | TEST-01 | Phase 3 | Complete |
-| TEST-02 | Phase 3 | Pending |
+| TEST-02 | Phase 3 | Complete |
 | TEST-03 | Phase 3 | Complete |
 | TEST-04 | Phase 3 | Complete |
 
