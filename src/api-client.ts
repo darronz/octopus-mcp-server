@@ -1,6 +1,7 @@
 import type { OctopusConfig, ConsumptionParams, ConsumptionResponse } from "./types.js";
 
 const OCTOPUS_API_BASE = "https://api.octopus.energy/v1";
+const FETCH_TIMEOUT_MS = 30000;
 
 export async function fetchConsumption(
   config: OctopusConfig,
@@ -51,17 +52,28 @@ export async function fetchConsumption(
   // Use Basic Auth with API key as username
   const auth = Buffer.from(`${config.apiKey}:`).toString("base64");
 
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Basic ${auth}`,
-      "Content-Type": "application/json",
-    },
-  });
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      headers: {
+        Authorization: `Basic ${auth}`,
+        "Content-Type": "application/json",
+      },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "TimeoutError") {
+      throw new Error(
+        `Request timed out after ${FETCH_TIMEOUT_MS / 1000} seconds querying ${type} meter ${identifier}`
+      );
+    }
+    throw error;
+  }
 
   if (!response.ok) {
     const errorText = await response.text();
     throw new Error(
-      `Octopus Energy API error (${response.status}): ${errorText}`
+      `Octopus Energy API error (${response.status}) querying ${type} meter ${identifier}: ${errorText}`
     );
   }
 
